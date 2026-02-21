@@ -9,13 +9,85 @@
     {
       "id": "2",
       "name": "Jaqueta Jeans",
-      "price": 199.9,
+      "price": 230,
       "active": true
     },
     {
       "id": "3",
       "name": "Tênis Branco",
       "price": 299.9,
+      "active": false
+    },
+    {
+      "id": "4",
+      "name": "Calça Chino Bege 2",
+      "price": 159.9,
+      "active": true
+    },
+    {
+      "id": "5",
+      "name": "Moletom com Capuz",
+      "price": 189.9,
+      "active": true
+    },
+    {
+      "id": "6",
+      "name": "Bermuda Cargo",
+      "price": 121,
+      "active": true
+    },
+    {
+      "id": "7",
+      "name": "Meias Cano Alto (Par)",
+      "price": 25,
+      "active": true
+    },
+    {
+      "id": "8",
+      "name": "Boné Aba Curva",
+      "price": 79.9,
+      "active": false
+    },
+    {
+      "id": "9",
+      "name": "Relógio de Pulso Digital",
+      "price": 450,
+      "active": true
+    },
+    {
+      "id": "10",
+      "name": "Cinto de Couro",
+      "price": 90,
+      "active": true
+    },
+    {
+      "id": "11",
+      "name": "Mochila Impermeável",
+      "price": 320,
+      "active": true
+    },
+    {
+      "id": "12",
+      "name": "Óculos de Sol",
+      "price": 199.9,
+      "active": false
+    },
+    {
+      "id": "13",
+      "name": "Camisa Polo Azul",
+      "price": 110,
+      "active": true
+    },
+    {
+      "id": "14",
+      "name": "Sapato Social",
+      "price": 350,
+      "active": true
+    },
+    {
+      "id": "15",
+      "name": "Regata Algodão",
+      "price": 45.9,
       "active": false
     }
   ]

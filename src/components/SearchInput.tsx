@@ -1,7 +1,7 @@
 type Props = {
-  value: string
-  onChange: (value: string) => void
-}
+  value: string;
+  onChange: (value: string) => void;
+};
 
 const SearchInput = ({ value, onChange }: Props) => {
   return (
@@ -12,7 +12,7 @@ const SearchInput = ({ value, onChange }: Props) => {
       onChange={(e) => onChange(e.target.value)}
       className="border rounded px-3 py-2 w-full"
     />
-  )
-}
+  );
+};
 
-export default SearchInput
+export default SearchInput;

@@ -1,18 +1,19 @@
-import { create } from "zustand"
-import { persist } from "zustand/middleware"
-import type { Product } from "../types/Product"
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { Product } from "../types/Product";
+import toast from "react-hot-toast";
 
 export type CartItem = Product & {
-  quantity: number
-}
+  quantity: number;
+};
 
 type CartStore = {
-  items: CartItem[]
-  addItem: (product: Product) => void
-  removeItem: (id: string) => void
-  updateQuantity: (id: string, quantity: number) => void
-  clearCart: () => void
-}
+  items: CartItem[];
+  addItem: (product: Product) => void;
+  removeItem: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
+  clearCart: () => void;
+};
 
 export const useCartStore = create<CartStore>()(
   persist(
@@ -21,23 +22,22 @@ export const useCartStore = create<CartStore>()(
 
       addItem: (product) =>
         set((state) => {
-          const existing = state.items.find(
-            (item) => item.id === product.id
-          )
+          const existing = state.items.find((item) => item.id === product.id);
 
           if (existing) {
             return {
               items: state.items.map((item) =>
                 item.id === product.id
                   ? { ...item, quantity: item.quantity + 1 }
-                  : item
+                  : item,
               ),
-            }
+            };
           }
-
+          
           return {
             items: [...state.items, { ...product, quantity: 1 }],
-          }
+          };
+
         }),
 
       removeItem: (id) =>
@@ -48,7 +48,7 @@ export const useCartStore = create<CartStore>()(
       updateQuantity: (id, quantity) =>
         set((state) => ({
           items: state.items.map((item) =>
-            item.id === id ? { ...item, quantity } : item
+            item.id === id ? { ...item, quantity } : item,
           ),
         })),
 
@@ -56,6 +56,6 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "cart-storage",
-    }
-  )
-)
+    },
+  ),
+);
