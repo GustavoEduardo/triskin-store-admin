@@ -1,0 +1,16 @@
+import { useIsFetching } from "@tanstack/react-query"
+import Loader from "./Loader"
+
+const GlobalLoader = () => {
+  const isFetching = useIsFetching() // retorna número de queries em fetch
+
+  if (!isFetching) return null
+
+  return (
+    <div className="fixed top-0 left-0 w-full h-1 z-50">
+      <Loader />
+    </div>
+  )
+}
+
+export default GlobalLoader

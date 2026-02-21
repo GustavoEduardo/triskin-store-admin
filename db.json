@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Camiseta Preta",
+      "price": 99.9,
+      "active": true
+    },
+    {
+      "id": "2",
+      "name": "Jaqueta Jeans",
+      "price": 199.9,
+      "active": true
+    },
+    {
+      "id": "3",
+      "name": "Tênis Branco",
+      "price": 299.9,
+      "active": false
+    }
+  ]
+}
