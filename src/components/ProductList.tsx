@@ -38,6 +38,14 @@ const ProductList = ({ search }: Props) => {
   }
   if (isError) return <ErrorMessage />;
 
+  if (filteredProducts.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <p className="text-gray-500">Nenhum produto encontrado</p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {filteredProducts?.map((product) => (

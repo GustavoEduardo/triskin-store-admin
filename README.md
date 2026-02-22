@@ -11,9 +11,9 @@ Admin de produtos com listagem, carrinho, edição e busca de produtos.
 - TypeScript
 - Tailwind CSS v3
 - Axios
-- Zustand (estado global do carrinho)
-- React Query (fetch, cache e mutations)
-- JSON Server (mock API)
+- Zustand
+- TanStack Query
+- JSON Server
 
 ------------------------------------------------------------------------
 
@@ -41,11 +41,26 @@ Admin de produtos com listagem, carrinho, edição e busca de produtos.
 
 ## Estratégias de otimização e estado global
 
-- Zustand: carrinho global simples, escalável e persistente no localStorage
-- React Query: queries e mutations otimizadas, cache automático, invalidação após update, - controle de loading global
-- useMemo: total do carrinho e badge calculados de forma eficiente, evitando re-renders desnecessários
-- Debounce: busca com 500ms para evitar chamadas desnecessárias à API
-- Tailwind: componentes limpos, reutilizáveis e responsivos,
+#### Zustand
+
+- Escolhido por sua API simples e baixo boilerplate
+- Permite gerenciamento de estado global com re-renderizações granulares (cada componente consome apenas o que precisa)
+- Utilização do middleware persist para manter o carrinho salvo após refresh, melhorando a experiência do usuário
+
+#### React Query
+
+- Escolhido para centralização do data fetching de forma declarativa
+- Reduzir o uso de useEfect e controle manual de estados assíncronos
+- Cache automático por queryKey
+- Invalidação inteligente após mutations
+- Controle de loading global e por componente
+- Redução de estados locais desnecessários (useState)
+
+#### useMemo
+- Utilizado para cálculos (total do carrinho, badge e busca) e evitar recomputações desnecessárias em re-renderizações
+
+#### Debounce
+- Busca com 500ms para evitar chamadas desnecessárias à API
 
 ------------------------------------------------------------------------
 
