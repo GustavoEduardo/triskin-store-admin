@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Product } from "../types/Product";
-import toast from "react-hot-toast";
 
 export type CartItem = Product & {
   quantity: number;

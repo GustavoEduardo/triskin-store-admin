@@ -9,10 +9,9 @@ import EditProductModal from "./EditProductModal";
 
 type Props = {
   search: string;
-  onAddToCart: (product: Product) => void;
 };
 
-const ProductList = ({ search, onAddToCart }: Props) => {
+const ProductList = ({ search }: Props) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -35,7 +34,6 @@ const ProductList = ({ search, onAddToCart }: Props) => {
         <ProductItem
           key={product.id}
           product={product}
-          onAddToCart={onAddToCart}
           onEdit={handleEdit}
         />
       ))}

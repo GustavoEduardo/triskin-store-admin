@@ -3,15 +3,17 @@ import { useState } from "react";
 import Button from "./Button";
 import { Loader } from "lucide-react";
 import toast from "react-hot-toast";
+import { useCartStore } from "../store/cartStore";
 
 type Props = {
   product: Product;
-  onAddToCart: (product: Product) => void;
   onEdit: (product: Product) => void;
 };
 
-const ProductItem = ({ product, onAddToCart, onEdit }: Props) => {
+const ProductItem = ({ product, onEdit }: Props) => {
   const [isAdding, setIsAdding] = useState(false);
+
+  const addItem = useCartStore((state) => state.addItem);
 
   return (
     <div className="border border-gray-100/10 rounded-md p-4 flex flex-col gap-8 justify-between items-center max-w-[320px]">
@@ -37,7 +39,7 @@ const ProductItem = ({ product, onAddToCart, onEdit }: Props) => {
           disabled={!product.active || isAdding}
           onClick={() => {
             setIsAdding(true);
-            onAddToCart(product);
+            addItem(product);
             setTimeout(() => {
               setIsAdding(false)
               toast.success("Produto adicionado com sucesso!")
