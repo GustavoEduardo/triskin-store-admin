@@ -3,7 +3,7 @@ import { getProducts } from "../api/products";
 import ProductItem from "./ProductItem";
 import ErrorMessage from "./ErrorMessage";
 import type { Product } from "../types/Product";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import EditProductModal from "./EditProductModal";
 
 type Props = {
@@ -15,6 +15,13 @@ const ProductList = ({ search }: Props) => {
     queryKey: ["products"],
     queryFn: getProducts,
   });
+
+  const filteredProducts = useMemo(() => {
+    if (!data) return [];
+    return data.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()),
+    );
+  }, [data, search]);
 
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
@@ -31,13 +38,9 @@ const ProductList = ({ search }: Props) => {
   }
   if (isError) return <ErrorMessage />;
 
-  const filtered = data?.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase()),
-  );
-
   return (
     <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {filtered?.map((product) => (
+      {filteredProducts?.map((product) => (
         <ProductItem key={product.id} product={product} onEdit={handleEdit} />
       ))}
       {editingProduct && (
