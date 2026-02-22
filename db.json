@@ -3,14 +3,14 @@
     {
       "id": "1",
       "name": "Camiseta Preta",
-      "price": 99.9,
+      "price": 100.9,
       "active": true
     },
     {
       "id": "2",
       "name": "Jaqueta Jeans",
       "price": 230,
-      "active": true
+      "active": false
     },
     {
       "id": "3",
@@ -33,8 +33,8 @@
     {
       "id": "6",
       "name": "Bermuda Cargo",
-      "price": 121,
-      "active": true
+      "price": 120,
+      "active": false
     },
     {
       "id": "7",

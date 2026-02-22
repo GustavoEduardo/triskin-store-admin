@@ -4,6 +4,7 @@ import { useCartStore } from "../store/cartStore";
 import { useMemo } from "react";
 import BackButton from "../components/BackButton";
 import toast from "react-hot-toast";
+import { formatCurrency } from "../utils/formatCurrency";
 
 const CartPage = () => {
   const { items, removeItem, updateQuantity } = useCartStore();
@@ -38,7 +39,7 @@ const CartPage = () => {
           >
             <div>
               <h3>{item.name}</h3>
-              <p>R$ {item.price.toFixed(2)}</p>
+              <p>{formatCurrency(item.price)}</p>
             </div>
 
             <div className="flex flex-col gap-4 md:flex-row md:justify-between">
@@ -64,7 +65,7 @@ const CartPage = () => {
       </div>
 
       <div className="text-right font-bold text-lg pr-4">
-        Total: R$ {total.toFixed(2)}
+        Total: {formatCurrency(total)}
       </div>
     </div>
   );

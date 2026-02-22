@@ -5,6 +5,7 @@ import { updateProduct } from "../api/products";
 import Button from "./Button";
 import { useCartStore } from "../store/cartStore";
 import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
 
 type Props = {
   product: Product;
@@ -32,7 +33,7 @@ const EditProductModal = ({ product, onClose }: Props) => {
     },
 
     onError: () => {
-      toast.error("Erro ao atualizar produto.");
+      toast.error("Erro ao tentar atualizar produto.");
     },
   });
 
@@ -85,7 +86,7 @@ const EditProductModal = ({ product, onClose }: Props) => {
             onClick={() => setShowConfirm(true)}
             className="bg-black text-white px-4 py-2 rounded disabled:opacity-50"
           >
-            {mutation.isPending ? "Salvando..." : "Salvar"}
+            {mutation.isPending ?  <Loader />  : "Salvar"}
           </Button>
         </div>
       </div>
@@ -103,8 +104,8 @@ const EditProductModal = ({ product, onClose }: Props) => {
             <div className="flex justify-end gap-2">
               <Button
                 onClick={() => {
-                  setShowConfirm(false);
                   onClose();
+                  setShowConfirm(false);
                 }}
                 variant="secondary"
               >
@@ -118,7 +119,7 @@ const EditProductModal = ({ product, onClose }: Props) => {
                 }}
                 variant="primary"
               >
-                Confirmar
+                 {mutation.isPending ?  <Loader />  : "Confirmar"}
               </Button>
             </div>
           </div>
