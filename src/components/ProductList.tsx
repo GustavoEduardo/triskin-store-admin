@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../api/products";
 import ProductItem from "./ProductItem";
-import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import type { Product } from "../types/Product";
 import { useState } from "react";
@@ -21,7 +20,15 @@ const ProductList = ({ search }: Props) => {
 
   const handleEdit = (product: Product) => setEditingProduct(product);
 
-  if (isLoading) return <Loader />;
+  if (isLoading) {
+    return (
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="h-40 bg-gray-500 animate-pulse rounded-md" />
+        ))}
+      </div>
+    );
+  }
   if (isError) return <ErrorMessage />;
 
   const filtered = data?.filter((product) =>
@@ -31,11 +38,7 @@ const ProductList = ({ search }: Props) => {
   return (
     <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {filtered?.map((product) => (
-        <ProductItem
-          key={product.id}
-          product={product}
-          onEdit={handleEdit}
-        />
+        <ProductItem key={product.id} product={product} onEdit={handleEdit} />
       ))}
       {editingProduct && (
         <EditProductModal

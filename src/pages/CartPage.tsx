@@ -25,10 +25,12 @@ const CartPage = () => {
   }
 
   return (
-    <div className="p-2 w-[100vw] space-y-4">
-      <div className="">
-        <BackButton />
-        <h2>Meu Carrinho</h2>
+    <div className="w-[100vw] space-y-6">
+      <div className="relative flex items-center justify-center">
+        <div className="absolute left-8">
+          <BackButton />
+        </div>
+        <h2 className="text-2xl font-bold">Meu Carrinho</h2>
       </div>
 
       <div className="p-6 w-[100vw] h-[70vh] overflow-y-auto space-y-6 border-1 border-white">
@@ -53,10 +55,13 @@ const CartPage = () => {
                 className="w-16 border px-2 py-1 rounded-md"
               />
 
-              <Button onClick={() => {
-                removeItem(item.id)
-                toast.success("Produto removido com sucesso!")
-                }} variant="danger">
+              <Button
+                onClick={() => {
+                  removeItem(item.id);
+                  toast.success("Produto removido do carrinho");
+                }}
+                variant="danger"
+              >
                 <Trash2 />
               </Button>
             </div>

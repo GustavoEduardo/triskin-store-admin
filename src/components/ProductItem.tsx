@@ -4,6 +4,7 @@ import Button from "./Button";
 import { Loader } from "lucide-react";
 import toast from "react-hot-toast";
 import { useCartStore } from "../store/cartStore";
+import { formatCurrency } from "../utils/formatCurrency";
 
 type Props = {
   product: Product;
@@ -21,7 +22,9 @@ const ProductItem = ({ product, onEdit }: Props) => {
         <h3 className="font-semibold">{product.name}</h3>
 
         <div className="flex gap-2 justify-between items-center">
-          <p className="text-sm text-gray-300">R$ {product.price.toFixed(2)}</p>
+          <p className="text-sm text-gray-300">
+            {formatCurrency(product.price)}
+          </p>
           <span
             className={`text-xs px-1  rounded ${
               product.active
@@ -41,8 +44,8 @@ const ProductItem = ({ product, onEdit }: Props) => {
             setIsAdding(true);
             addItem(product);
             setTimeout(() => {
-              setIsAdding(false)
-              toast.success("Produto adicionado com sucesso!")
+              setIsAdding(false);
+              toast.success("Produto adicionado ao carrinho");
             }, 300);
           }}
           variant={product.active ? "success" : "secondary"}
